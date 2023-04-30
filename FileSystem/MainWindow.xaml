@@ -1,0 +1,37 @@
+﻿<Window x:Class="FileSystem.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:FileSystem"
+        mc:Ignorable="d"
+        Title="MainWindow" Height="450" Width="800">
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="397*"/>
+            <RowDefinition Height="37*"/>
+        </Grid.RowDefinitions>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="383*"/>
+            <ColumnDefinition Width="417*"/>
+        </Grid.ColumnDefinitions>
+        <TextBox Name="textBox" Grid.RowSpan="2"></TextBox>
+        <StackPanel Grid.Column="1" Grid.RowSpan="1">
+            <TextBlock Text="Выберете место хранения"/>
+            <TextBlock Visibility="Hidden" Name="showPath"/>
+            <Button  Click="Button_Click">Create</Button>
+            <TextBlock Margin="0 30 0 0">Создать текстовый файл</TextBlock>
+            <TextBox Name="nameFile"></TextBox>
+            <Button Opacity="0.3" Name="createFile" Click="Button_Click_1">Создать</Button>
+            <ListView Name="listFiles" SelectionChanged="ListView_SelectionChanged" ItemsSource="{Binding allFiles}">
+                <ListView.ItemTemplate>
+                    <DataTemplate>
+                        <StackPanel>
+                            <Label Content="{Binding}"></Label>
+                        </StackPanel>
+                    </DataTemplate>
+                </ListView.ItemTemplate>
+            </ListView>
+        </StackPanel>
+    </Grid>
+</Window>
